@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>tech.7th.demo</groupId>
+    <artifactId>springboot-javafx</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+    <!-- Build properties -->
+    <java.version>1.8</java.version>
+    <maven.version>3.0.0</maven.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+    <!-- springboot version -->
+    <spring-boot.version>2.1.2.RELEASE</spring-boot.version>
+        <springboot-javafx-support.version>2.1.6</springboot-javafx-support.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>de.roskenet</groupId>
+            <artifactId>springboot-javafx-support</artifactId>
+            <version>${springboot-javafx-support.version}</version>
+        </dependency>
+    </dependencies>
+
+
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-parent</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.zenjava</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <configuration>
+                    <bundleArguments>
+                        <!-- 是否显示文件选择器 -->
+                        <installdirChooser>true</installdirChooser>
+                    </bundleArguments>
+                    <!-- 主类 -->
+                    <mainClass>tech.seventh.fxboot.demo.MainController</mainClass>
+                    <!-- 是否生成桌面快捷方式 -->
+                    <needShortcut>true</needShortcut>
+                    <!-- 公司名称 -->
+                    <vendor>7th.tech</vendor>
+                    <!-- 应用程序名称 -->
+                    <appName>My first fx app</appName>
+                </configuration>
+                <!--
+
+JavaFX-Maven-Plugin可以打包 jar、native、webbundle、key-store这些。
+由于我是 mac，一般用 jar和 native，执行命令mvn jfx:native 会看到打包成了pkg 和 dmg 两种类型的安装包
+
+###
+
+
+
+检测到 [iscc.exe] 版本 0, 但需要版本 5。
+[INFO] Skipping 'EXE 安装程序' because of configuration error '找不到 InnoSetup 编译器 (iscc.exe)。'
+Advice to fix:   从 http://www.jrsoftware.org 下载 InnoSetup 5 或更高版本, 然后将其添加到 PATH。
+[INFO] Skipping 'MSI 安装程序' because of configuration error '找不到 WiX 工具 (light.exe, candle.exe)。'
+Advice to fix:   从 http://wix.sf.net 下载 WiX 3.0 或更高版本, 然后将其添加到 PATH。
+[INFO] Skipping 'WebStart JNLP Bundler' because of configuration error 'No OutFile Specificed'
+Advice to fix: Please specify the name of the JNLP Outut file in 'jnlp.outfile'
+
+
+                -->
+            </plugin>
+        </plugins>
+    </build>
+</project>
