@@ -81,6 +81,13 @@
                     <vendor>7th.tech</vendor>
                     <!-- 应用程序名称 -->
                     <appName>My first fx app</appName>
+                    <!-- 图标的位置，默认位置 src/main/deploy -->
+                    <deployDir>${basedir}/src/main/resources/images/</deployDir>
+                    <!-- 菜单 -->
+                    <needMenu>true</needMenu>
+                    <!-- 桌面图标 -->
+                    <needShortcut>true</needShortcut>
+
                 </configuration>
                 <!--
 
@@ -100,6 +107,12 @@ Advice to fix:   从 http://wix.sf.net 下载 WiX 3.0 或更高版本, 然后将
 Advice to fix: Please specify the name of the JNLP Outut file in 'jnlp.outfile'
 
 
+###
+https://www.jianshu.com/p/fd61706ad6fa
+在 Windows 和 Mac 的网页上唤起 JavaFX 应用
+###
+https://blog.csdn.net/loongshawn/article/details/53639924
+利用JavaFx开发RIA桌面应用
                 -->
             </plugin>
         </plugins>
